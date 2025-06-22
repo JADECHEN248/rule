@@ -315,14 +315,14 @@
         "tag": "custom-direct",
         "type": "remote",
         "format": "text",
-        "url": "https://raw.githubusercontent.com/JADECHEN248/rule/refs/heads/main/Custom_Direct.list",
+        "url": "https://gh-proxy.com/raw.githubusercontent.com/JADECHEN248/rule/refs/heads/main/Custom_Direct.list",
         "download_detour": "➡️ 直连"
       },
        {
         "tag": "custom-proxy",
         "type": "remote",
         "format": "text",
-        "url": "https://raw.githubusercontent.com/JADECHEN248/rule/refs/heads/main/Custom_Proxy.list",
+        "url": "https://gh-proxy.com/raw.githubusercontent.com/JADECHEN248/rule/refs/heads/main/Custom_Proxy.list",
         "download_detour": "➡️ 直连"
       },
       {
@@ -343,7 +343,7 @@
         "tag": "steam-cdn",
         "type": "remote",
         "format": "text",
-        "url": "https://raw.githubusercontent.com/JADECHEN248/rule/refs/heads/main/Steam_CDN.list",
+        "url": "https://gh-proxy.com/raw.githubusercontent.com/JADECHEN248/rule/refs/heads/main/Steam_CDN.list",
         "download_detour": "➡️ 直连"
       },
       {
