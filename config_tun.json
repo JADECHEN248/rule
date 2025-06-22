@@ -39,9 +39,13 @@
     ],
     "rules": [
       {
-        "outbound": "any",
-        "server": "dns_direct",
-        "disable_cache": true
+        "domain_suffix": [
+          "services.googleapis.cn",
+          "googleapis.cn",
+          "xn--ngstr-lra8j.com",
+          "gstatic.com"
+        ],
+        "server": "dns_proxy"
       },
       {
         "rule_set": "geosite-cn",
@@ -268,7 +272,9 @@
     { "tag": "REJECT", "type": "block" }
   ],
   "route": {
+    "auto_detect_interface": true,
     "rules": [
+      { "protocol": "dns", "action": "hijack-dns" },
       {"rule_set": "geosite-private", "outbound": "🎯 全球直连"},
       {"rule_set": "geoip-private", "outbound": "🎯 全球直连"},
       {"rule_set": "custom-direct", "outbound": "🎯 全球直连"},
