@@ -39,9 +39,13 @@
     ],
     "rules": [
       {
-        "outbound": "any",
-        "server": "dns_direct",
-        "disable_cache": true
+        "domain_suffix": [
+          "services.googleapis.cn",
+          "googleapis.cn",
+          "xn--ngstr-lra8j.com",
+          "gstatic.com"
+        ],
+        "server": "dns_proxy"
       },
       {
         "rule_set": "geosite-cn",
