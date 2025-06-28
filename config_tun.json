@@ -212,7 +212,7 @@
       {
         "tag": "steam-cdn",
         "type": "remote",
-        "format": "text",
+        "format": "source",
         "url": "https://gh-proxy.com/raw.githubusercontent.com/JADECHEN248/rule/refs/heads/main/Steam_CDN.list",
         "download_detour": "➡️ 直连"
       },
