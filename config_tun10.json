@@ -14,51 +14,48 @@
       "external_ui_download_detour": "➡️ 直连",
       "default_mode": "rule"
     },
-  "cache_file": {
-    "enabled": true,
-    "path": "/etc/sing-box/cache.db",
-    "store_fakeip": false
+    "cache_file": {
+      "enabled": true,
+      "path": "/etc/sing-box/cache.db",
+      "store_fakeip": false
     }
   },
 
- "dns": 
- {
-   "servers": 
-   [
-     {"tag": "dns_direct", "address": "120.196.165.24", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "➡️ 直连"},
-     {"tag": "dns_proxy", "address": "tls://8.8.8.8", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🚀 节点选择"}
-   ],
-   "rules": 
-   [
-     {"outbound": "any", "server": "dns_direct", "disable_cache": true},
-     {"clash_mode": "Direct", "server": "dns_direct"},
-     {"clash_mode": "Global", "server": "dns_proxy"},
-     {"rule_set": "geosite-cn", "action": "route","server": "dns_direct"},
-     {"rule_set": "geosite-geolocation-!cn", "server": "dns_proxy"}
-   ],
-   "final": "dns_proxy",
-   "strategy": "ipv4_only"
-},
-
-"inbounds": [
-  {
-    "tag": "tun-in",
-    "type": "tun",
-    "address": [
-      "172.19.0.1/30",
-      "fdfe:dcba:9876::1/126"
+  "dns": {
+    "servers": [
+      {"tag": "dns_direct", "address": "120.196.165.24", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "➡️ 直连"},
+      {"tag": "dns_proxy", "address": "tls://8.8.8.8", "address_strategy": "ipv4_only", "strategy": "ipv4_only", "detour": "🚀 节点选择"}
     ],
-    "mtu": 9000,
-    "auto_route": true,
-    "auto_redirect": true
+    "rules": [
+      {"outbound": "any", "server": "dns_direct", "disable_cache": true},
+      {"clash_mode": "Direct", "server": "dns_direct"},
+      {"clash_mode": "Global", "server": "dns_proxy"},
+      {"rule_set": "geosite-cn", "action": "route", "server": "dns_direct"},
+      {"rule_set": "geosite-geolocation-!cn", "server": "dns_proxy"}
+    ],
+    "final": "dns_proxy",
+    "strategy": "ipv4_only"
   },
-  {
-    "tag": "mixed-in",
-    "type": "mixed",
-    "listen": "0.0.0.0",
-    "listen_port": 7893
-  }
-],
+
+  "inbounds": [
+    {
+      "tag": "tun-in",
+      "type": "tun",
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "mtu": 9000,
+      "auto_route": true,
+      "auto_redirect": true
+    },
+    {
+      "tag": "mixed-in",
+      "type": "mixed",
+      "listen": "0.0.0.0",
+      "listen_port": 7893
+    }
+  ],
 
   "outbounds": [
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": ["🔯 香港自动", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换", "♻️ 自动选择", "➡️ 直连"] },
@@ -72,7 +69,8 @@
     { "tag": "🎥 Netflix", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择", "🔯 香港自动", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
     { "tag": "📲 Telegram", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择", "🔯 香港自动", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点", "🐸 手动切换"] },
     { "tag": "🍏 Apple", "type": "selector", "outbounds": ["➡️ 直连", "🇭🇰 香港节点", "🇯🇵 日本节点", "🇺🇲 美国节点"] },
-    { "tag": "🐠 兜底策略", "type": "selector", "outbounds": ["🚀 节点选择","➡️ 直连"] },
+    { "tag": "🎮 Steam下载", "type": "selector", "outbounds": ["➡️ 直连", "🚀 节点选择"] },
+    { "tag": "🐠 兜底策略", "type": "selector", "outbounds": ["🚀 节点选择", "➡️ 直连"] },
     { "tag": "🐸 手动切换", "type": "selector", "outbounds": ["{all}"]},
     { "tag": "🇭🇰 香港节点", "type": "selector", "outbounds": ["{all}"], "filter": [{ "action": "include", "keywords": ["🇭🇰|HK|hk|香港|港|HongKong"] }] },
     { "tag": "🇯🇵 日本节点", "type": "selector", "outbounds": ["{all}"], "filter": [{ "action": "include", "keywords": ["🇯🇵|JP|jp|日本|日|Japan"] }] },
@@ -83,33 +81,45 @@
     { "tag": "➡️ 直连", "type": "direct" }
   ],
   
-  "route": 
- {
-   "auto_detect_interface": true,
-   "final": "🐠 兜底策略",
-   "rules": 
-   [
-     {"action": "sniff"},
-     {"protocol": "dns", "action": "hijack-dns"},
-     {"clash_mode": "direct", "outbound": "➡️ 直连"},
-     {"clash_mode": "global", "outbound": "GLOBAL"},
-     {"domain": ["clash.razord.top", "yacd.metacubex.one", "yacd.haishan.me", "d.metacubex.one"], "outbound": "➡️ 直连"},
-     {"rule_set": "geosite-private", "outbound": "➡️ 直连"},
-     {"rule_set": "geosite-chat", "outbound": "🤖 OpenAI"},
-     {"rule_set": "geosite-youtube", "outbound": "📹 YouTube"},
-     {"rule_set": "geosite-github", "outbound": "👨‍💻 Github"},
-     {"rule_set": ["geosite-google", "geoip-google"], "outbound": "🍀 Google"},
-     {"rule_set": ["geosite-telegram", "geoip-telegram"], "outbound": "📲 Telegram"},
-     {"rule_set": "geosite-tiktok", "outbound": "🎵 TikTok"},
-     {"rule_set": ["geosite-netflix", "geoip-netflix"], "outbound": "🎥 Netflix"},
-     {"rule_set": ["geosite-apple", "geoip-apple"], "outbound": "🍏 Apple"},
-     {"rule_set": "geosite-onedrive", "outbound": "🐬 OneDrive"},
-     {"rule_set": "geosite-microsoft", "outbound": "🪟 Microsoft"},
-     {"rule_set": "geosite-geolocation-!cn", "outbound": "🚀 节点选择"},
-     {"rule_set": ["geoip-cn", "geosite-cn"], "outbound": "➡️ 直连"}
-   ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "🐠 兜底策略",
+    "rules": [
+      {"action": "sniff"},
+      {"protocol": "dns", "action": "hijack-dns"},
+      
+      // Steam 下载相关域名走直连
+      {"domain": ["steamserver.net"], "outbound": "🎮 Steam下载"},
+      {"domain_suffix": ["steamcontent.com"], "outbound": "🎮 Steam下载"},
+      {"domain_suffix": ["xz.pphimalayanrt.com"], "outbound": "🎮 Steam下载"},
+      {"domain_suffix": ["cdn.steamstatic.com"], "outbound": "🎮 Steam下载"},
+      {"domain_suffix": ["steamcdn-a.akamaihd.net"], "outbound": "🎮 Steam下载"},
+      {"domain_regex": ["^st[a-z0-9].steamstatic.com"], "outbound": "🎮 Steam下载"},
+      {"domain_regex": ["^cdn[a-z0-9].steamstatic.com"], "outbound": "🎮 Steam下载"},
+      {"domain": ["steampipe.akamaized.net", "cm.steampowered.com"], "outbound": "🎮 Steam下载"},
+      {"rule_set": "geosite-steam@cn", "outbound": "🎮 Steam下载"},
+      
+      // 保持原有规则不变
+      {"clash_mode": "direct", "outbound": "➡️ 直连"},
+      {"clash_mode": "global", "outbound": "GLOBAL"},
+      {"domain": ["clash.razord.top", "yacd.metacubex.one", "yacd.haishan.me", "d.metacubex.one"], "outbound": "➡️ 直连"},
+      {"rule_set": "geosite-private", "outbound": "➡️ 直连"},
+      {"rule_set": "geosite-chat", "outbound": "🤖 OpenAI"},
+      {"rule_set": "geosite-youtube", "outbound": "📹 YouTube"},
+      {"rule_set": "geosite-github", "outbound": "👨‍💻 Github"},
+      {"rule_set": ["geosite-google", "geoip-google"], "outbound": "🍀 Google"},
+      {"rule_set": ["geosite-telegram", "geoip-telegram"], "outbound": "📲 Telegram"},
+      {"rule_set": "geosite-tiktok", "outbound": "🎵 TikTok"},
+      {"rule_set": ["geosite-netflix", "geoip-netflix"], "outbound": "🎥 Netflix"},
+      {"rule_set": ["geosite-apple", "geoip-apple"], "outbound": "🍏 Apple"},
+      {"rule_set": "geosite-onedrive", "outbound": "🐬 OneDrive"},
+      {"rule_set": "geosite-microsoft", "outbound": "🪟 Microsoft"},
+      {"rule_set": "geosite-geolocation-!cn", "outbound": "🚀 节点选择"},
+      {"rule_set": ["geoip-cn", "geosite-cn"], "outbound": "➡️ 直连"}
+    ],
     
-   "rule_set": [
+    "rule_set": [
+      { "tag": "geosite-steam@cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam@cn.srs", "download_detour": "➡️ 直连" },
       { "tag": "geosite-chat", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "➡️ 直连" },
       { "tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "➡️ 直连" },
       { "tag": "geosite-google", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs", "download_detour": "➡️ 直连" },
