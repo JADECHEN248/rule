@@ -33,8 +33,7 @@
         "address": "https-doh://dns.google/dns-query",
         "address_strategy": "ipv4_only",
         "strategy": "ipv4_only",
-        "detour": "🚀 节点选择",
-        "enable_ecs": true
+        "detour": "🚀 节点选择"
       }
     ],
     "rules": [
