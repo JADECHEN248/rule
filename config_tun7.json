@@ -23,16 +23,14 @@
     "servers": [
       {
         "tag": "dns_direct",
-        "address": "120.196.165.24",
-        "protocol": "udp",
+        "address": "udp://120.196.165.24",
         "address_strategy": "ipv4_only",
         "strategy": "ipv4_only",
         "detour": "➡️ 直连"
       },
       {
         "tag": "dns_proxy",
-        "address": "dns.google",
-        "protocol": "https",
+        "address": "https://dns.google/dns-query",
         "address_resolver": "dns_direct",
         "address_strategy": "ipv4_only",
         "strategy": "ipv4_only",
