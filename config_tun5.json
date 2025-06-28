@@ -30,7 +30,8 @@
       },
       {
         "tag": "dns_proxy",
-        "address": "https-doh://dns.google/dns-query",
+        "type": "https",
+        "address": "dns.google",
         "address_resolver": "dns_direct",
         "address_strategy": "ipv4_only",
         "strategy": "ipv4_only",
@@ -268,9 +269,7 @@
       },
       {
         "tag": "geosite-apple",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
+        "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs",
         "download_detour": "➡️ 直连"
       },
       {
