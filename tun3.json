@@ -101,8 +101,8 @@
       {"domain_suffix": ["mtalk.google.com"], "outbound": "🚀 节点选择"},
       {"domain_suffix": ["cloudsync-prod.s3.us-east-1.amazonaws.com"], "outbound": "🚀 节点选择"},
       {"domain_suffix": ["onedrive.live.com"], "outbound": "🚀 节点选择"},
-      {"ip_cidr": ["1.1.1.1/32"], "outbound": "🚀 节点选择", "resolve_destination": false},
-      {"ip_cidr": ["1.0.0.1/32"], "outbound": "🚀 节点选择", "resolve_destination": false},
+      {"ip_cidr": ["1.1.1.1/32"], "outbound": "🚀 节点选择"},
+      {"ip_cidr": ["1.0.0.1/32"], "outbound": "🚀 节点选择"},
       
       {"domain": ["steamserver.net"], "outbound": "🎮 Steam下载"},
       {"domain_suffix": ["steamcontent.com"], "outbound": "🎮 Steam下载"},
