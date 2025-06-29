@@ -88,7 +88,6 @@
       {"action": "sniff"},
       {"protocol": "dns", "action": "hijack-dns"},
       
-      // 新增强制走代理的规则
       {"domain_suffix": ["ip.sb"], "outbound": "🚀 节点选择"},
       {"domain_suffix": ["ipify.org"], "outbound": "🚀 节点选择"},
       {"domain_suffix": ["services.googleapis.cn"], "outbound": "🚀 节点选择"},
@@ -105,7 +104,6 @@
       {"ip_cidr": ["1.1.1.1/32"], "outbound": "🚀 节点选择", "resolve_destination": false},
       {"ip_cidr": ["1.0.0.1/32"], "outbound": "🚀 节点选择", "resolve_destination": false},
       
-      // Steam相关规则
       {"domain": ["steamserver.net"], "outbound": "🎮 Steam下载"},
       {"domain_suffix": ["steamcontent.com"], "outbound": "🎮 Steam下载"},
       {"domain_suffix": ["xz.pphimalayanrt.com"], "outbound": "🎮 Steam下载"},
@@ -116,7 +114,6 @@
       {"domain": ["steampipe.akamaized.net", "cm.steampowered.com"], "outbound": "🎮 Steam下载"},
       {"rule_set": "geosite-steam@cn", "outbound": "🎮 Steam下载"},
       
-      // 原有规则
       {"clash_mode": "direct", "outbound": "➡️ 直连"},
       {"clash_mode": "global", "outbound": "GLOBAL"},
       {"domain": ["clash.razord.top", "yacd.metacubex.one", "yacd.haishan.me", "d.metacubex.one"], "outbound": "➡️ 直连"},
