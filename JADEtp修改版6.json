@@ -51,6 +51,13 @@
         "server": "dns_proxy"
       },
       {
+        "domain_suffix": [
+          "googleapis.cn",
+          "xn--ngstr-lra8j.com"
+        ],
+        "server": "dns_proxy"
+      },
+      {
         "rule_set": "geosite-cn",
         "server": "dns_direct"
       },
