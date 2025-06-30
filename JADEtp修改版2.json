@@ -1,4 +1,3 @@
-// --- START OF config.json (Fixed TProxy Version) ---
 {
   "log": {
     "disabled": false,
@@ -180,4 +179,3 @@
     ]
   }
 }
-// --- END OF config.json (Fixed TProxy Version) ---
