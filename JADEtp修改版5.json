@@ -23,7 +23,7 @@
     "servers": [
       {
         "tag": "dns_direct",
-        "address": "202.96.128.166",
+        "address": "120.196.165.24",
         "address_strategy": "ipv4_only",
         "strategy": "ipv4_only",
         "detour": "➡️ 直连"
