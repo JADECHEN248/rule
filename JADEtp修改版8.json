@@ -113,7 +113,7 @@
     "default_mark": 666,
     "rules": [
       {
-        "source_cidr": [
+        "source_ip_cidr": [
           "192.168.100.227/32"
         ],
         "outbound": "➡️ 直连"
