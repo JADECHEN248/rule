@@ -112,6 +112,7 @@
     "final": "🐠 兜底策略",
     "default_mark": 666,
   },
+  "rules": [
       {"action": "sniff"},
       {"protocol": "dns", "action": "hijack-dns"},
       {"domain_suffix": ["ip.sb"], "outbound": "🚀 节点选择"},
