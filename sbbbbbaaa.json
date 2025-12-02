@@ -8,9 +8,9 @@
   ],
   "rules": [
     {"clash_mode": "direct", "server": "local"},
-    {"rule_set": ["geosite-cn", "geoip-cn"], "server": "local"},
-    {"rule_set": ["geosite-!cn", "geoip-!cn"], "server": "fakeip"},
-    {"clash_mode": "global", "rule_set": ["geosite-cn", "geoip-cn"], "server": "local"},
+    {"rule_set": ["geosite-cn"], "server": "local"},
+    {"rule_set": ["geosite-!cn"], "server": "fakeip"},
+    {"clash_mode": "global", "rule_set": ["geosite-cn"], "server": "local"},
     {"clash_mode": "global", "server": "fakeip"},
     {"query_type": "HTTPS", "action": "reject"},
     {"rule_set": "geosite-fakeipfilter", "server": "local"},
