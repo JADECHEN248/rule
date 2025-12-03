@@ -7,13 +7,13 @@
       { "tag": "fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
+      { "query_type": "HTTPS", "action": "reject" },
       { "clash_mode": "direct", "server": "local" },
       { "rule_set": ["geosite-google", "geosite-google-cn"], "server": "fakeip" },
       { "rule_set": ["geosite-cn"], "server": "local" },
       { "rule_set": ["geosite-!cn"], "server": "fakeip" },
       { "clash_mode": "global", "rule_set": ["geosite-cn"], "server": "local" },
       { "clash_mode": "global", "server": "fakeip" },
-      { "query_type": "HTTPS", "action": "reject" },
       { "rule_set": "geosite-fakeipfilter", "server": "local" },
       { "query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1 }
     ],
