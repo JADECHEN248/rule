@@ -4,7 +4,7 @@
       {
         "tag": "local",
         "type": "udp",
-        "server": "223.5.5.5"
+        "server": "116.116.116.116"
       },
       {
         "tag": "public",
@@ -64,7 +64,7 @@
       }
     ],
     "final": "foreign",
-    "client_subnet": "223.5.5.0/24",
+    "client_subnet": "163.125.131.0/24",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true
