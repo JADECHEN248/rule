@@ -13,7 +13,6 @@
       { "domain_suffix": ["steamcommunity.com", "steamusercontent.com", "steamuserimages-a.akamaihd.net"], "server": "fakeip" },
       { "rule_set": ["geosite-steamcn", "geosite-category-games@cn"], "server": "local" },
       { "rule_set": ["geosite-steam"], "server": "fakeip" },
-
       { "rule_set": ["geosite-cn"], "server": "local" },
       { "rule_set": ["geosite-!cn"], "server": "fakeip" },
       { "clash_mode": "global", "rule_set": ["geosite-cn"], "server": "local" },
