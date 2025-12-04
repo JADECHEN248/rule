@@ -11,7 +11,7 @@
         "tag": "foreign",
         "type": "https",
         "server": "dns.google",
-        "detour": "🇭🇰 香港自动"
+        "detour": "🚀 默认代理"
       },
       {
         "tag": "fakeip",
@@ -22,18 +22,18 @@
     ],
     "rules": [
       { "outbound": [ "any" ], "server": "local" },
-      { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "local" },
-      { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "foreign" },
+      { "clash_mode": "direct", "server": "local" },
+      { "clash_mode": "global", "server": "foreign" },
       
-      { "rule_set": [ "geosite-fakeipfilter" ], "server": "local" },
+      { "rule_set": "geosite-fakeipfilter", "server": "local" },
       
-      { "rule_set": [ "geosite-cn" ], "query_type": [ "A", "AAAA" ], "server": "local" },
+      { "rule_set": "geosite-cn", "server": "local" },
       
-      { "rule_set": [ "geosite-proxy" ], "query_type": [ "A", "AAAA" ], "server": "fakeip" },
+      { "rule_set": "geosite-proxy", "server": "fakeip" },
       
       { 
         "fallback_rules": [ 
-          { "rule_set": [ "geoip-cn" ], "server": "local" }, 
+          { "rule_set": "geoip-cn", "server": "local" }, 
           { "match_all": true, "server": "fakeip" } 
         ], 
         "server": "local" 
