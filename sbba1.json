@@ -10,13 +10,8 @@
       { "query_type": "HTTPS", "action": "reject" },
       { "clash_mode": "direct", "server": "local" },
       { "rule_set": ["geosite-google", "geosite-google-cn"], "server": "fakeip" },
-      
-      // 🔥 1. Steam/暴雪/Epic 等所有国内下载 CDN -> 走本地 DNS (满速下载)
       { "rule_set": ["geosite-steamcn", "geosite-category-games@cn"], "server": "local" },
-      
-      // 🔥 2. Steam 剩余部分(壁纸/创意工坊/社区) -> 走 FakeIP (修复 Wallpaper Engine)
       { "rule_set": ["geosite-steam"], "server": "fakeip" },
-
       { "rule_set": ["geosite-cn"], "server": "local" },
       { "rule_set": ["geosite-!cn"], "server": "fakeip" },
       { "clash_mode": "global", "rule_set": ["geosite-cn"], "server": "local" },
