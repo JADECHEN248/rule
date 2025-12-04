@@ -4,7 +4,7 @@
       {
         "tag": "local",
         "type": "udp",
-        "server": "223.5.5.5"
+        "server": "116.116.116.116"
       },
       {
         "tag": "public",
@@ -16,7 +16,7 @@
         "tag": "foreign",
         "type": "https",
         "server": "dns.google",
-        "detour": "🚀 默认代理"
+        "detour": "🇭🇰 香港自动"
       },
       {
         "tag": "fakeip",
