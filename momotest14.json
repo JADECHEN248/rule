@@ -1,9 +1,9 @@
 {
   "dns": {
     "servers": [
-      { "tag": "local", "type": "udp", "server": "116.116.116.116" },
-      { "tag": "public", "type": "https", "server": "dns.alidns.com", "domain_resolver": "local" },
-      { "tag": "foreign", "type": "https", "server": "8.8.8.8", "detour": "🇭🇰 香港节点" },
+      { "tag": "local", "type": "udp", "address": "116.116.116.116" },
+      { "tag": "public", "type": "https", "address": "https://dns.alidns.com/dns-query", "detour": "🎯 全球直连" },
+      { "tag": "foreign", "type": "https", "address": "https://8.8.8.8/dns-query", "detour": "🇭🇰 香港节点" },
       { "tag": "fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
@@ -39,16 +39,16 @@
     { "tag": "🛑 广告域名", "type": "selector", "outbounds": ["🎯 全球直连"] },
     { "tag": "🎯 全球直连", "type": "direct" },
     { "tag": "GLOBAL", "type": "selector", "outbounds": ["🚀 节点选择","🎮 游戏平台","🌍 国外媒体","🤖 人工智能","🇬 谷歌服务","📲 电报消息","🇭🇰 香港节点","🇹🇼 台湾节点","🇯🇵 日本节点","🇸🇬 新加坡节点","🇺🇸 美国节点","🎯 全球直连"] },
-    { "tag": "🇭🇰 香港节点", "type": "urltest", "tolerance": 50, "use_all_providers": true, "includes": ["(?i)(🇭🇰|港|hk|hongkong)"] },
-    { "tag": "🇹🇼 台湾节点", "type": "urltest", "tolerance": 50, "use_all_providers": true, "includes": ["(?i)(🇹🇼|台|tw|taiwan)"] },
-    { "tag": "🇯🇵 日本节点", "type": "urltest", "tolerance": 50, "use_all_providers": true, "includes": ["(?i)(🇯🇵|日|jp|japan)"] },
-    { "tag": "🇸🇬 新加坡节点", "type": "urltest", "tolerance": 50, "use_all_providers": true, "includes": ["(?i)(🇸🇬|新|sg|singapore)"] },
-    { "tag": "🇺🇸 美国节点", "type": "urltest", "tolerance": 50, "use_all_providers": true, "includes": ["(?i)(🇺🇸|美|us|unitedstates)"] }
+    { "tag": "🇭🇰 香港节点", "type": "urltest", "tolerance": 50, "outbounds": ["{all}"], "include": "(?i)(🇭🇰|港|hk|hongkong)" },
+    { "tag": "🇹🇼 台湾节点", "type": "urltest", "tolerance": 50, "outbounds": ["{all}"], "include": "(?i)(🇹🇼|台|tw|taiwan)" },
+    { "tag": "🇯🇵 日本节点", "type": "urltest", "tolerance": 50, "outbounds": ["{all}"], "include": "(?i)(🇯🇵|日|jp|japan)" },
+    { "tag": "🇸🇬 新加坡节点", "type": "urltest", "tolerance": 50, "outbounds": ["{all}"], "include": "(?i)(🇸🇬|新|sg|singapore)" },
+    { "tag": "🇺🇸 美国节点", "type": "urltest", "tolerance": 50, "outbounds": ["{all}"], "include": "(?i)(🇺🇸|美|us|unitedstates)" }
   ],
   "route": {
     "rules": [
-      { "action": "sniff", "sniffer": ["http","tls","quic","dns"] },
-      { "inbound": "dns-in", "action": "hijack-dns" },
+      { "action": "sniff", "sniff": ["http","tls","quic","dns"] },
+      { "inbound": "dns-in", "action": "hijack_dns" },
       { "ip_is_private": true, "outbound": "🎯 全球直连" },
       { "clash_mode": "Direct", "outbound": "🎯 全球直连" },
       { "clash_mode": "Global", "outbound": "GLOBAL" },
@@ -101,7 +101,7 @@
     { "tag": "socks-in", "type": "socks", "listen": "::", "listen_port": 1080 },
     { "tag": "redirect-in", "type": "redirect", "listen": "::", "listen_port": 7890 },
     { "tag": "tproxy-in", "type": "tproxy", "listen": "::", "listen_port": 7891 },
-    { "tag": "tun-in", "type": "tun", "interface_name": "momo", "address": ["172.31.0.1/30","fdfe:dcba:9876::1/126"], "auto_route": false, "auto_redirect": false }
+    { "tag": "tun-in", "type": "tun", "interface_name": "momo", "inet4_address": "172.31.0.1/30", "inet6_address": "fdfe:dcba:9876::1/126", "auto_route": false, "auto_redirect": false }
   ],
   "experimental": {
     "cache_file": {
@@ -119,7 +119,6 @@
     }
   },
   "log": {
-    "disabled": false,
     "level": "info",
     "timestamp": true
   }
