@@ -10,6 +10,7 @@
       { "query_type": "HTTPS", "action": "reject" },
       { "clash_mode": "direct", "server": "local" },
       { "rule_set": ["geosite-google", "geosite-google-cn"], "server": "fakeip" },
+      { "rule_set": ["geosite-category-games@cn"], "server": "local" },
       { "rule_set": ["geosite-cn"], "server": "local" },
       { "rule_set": ["geosite-!cn"], "server": "fakeip" },
       { "clash_mode": "global", "rule_set": ["geosite-cn"], "server": "local" },
@@ -97,6 +98,7 @@
       { "tag": "geosite-paypal", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/paypal.srs", "download_detour": "🎯 全球直连" },
       { "tag": "geosite-steamcn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam@cn.srs", "download_detour": "🎯 全球直连" },
       { "tag": "geosite-steam", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs", "download_detour": "🎯 全球直连" },
+      { "tag": "geosite-category-games@cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games@cn.srs", "download_detour": "🎯 全球直连" },
       { "tag": "geosite-!cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs", "download_detour": "🎯 全球直连" },
       { "tag": "geosite-cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs", "download_detour": "🎯 全球直连" },
       { "tag": "geoip-google", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs", "download_detour": "🎯 全球直连" },
@@ -117,7 +119,7 @@
     { "tag": "tun-in", "type": "tun", "interface_name": "momo", "address": ["172.31.0.1/30", "fdfe:dcba:9876::1/126"], "auto_route": false, "auto_redirect": false }
   ],
   "experimental": {
-    "cache_file": { "enabled": true, "path": "/etc/momo/run/cache.db", "store_fakeip": true },
+    "cache_file": { "enabled": true, "path": "cache.db", "store_fakeip": true },
     "clash_api": {
       "external_controller": "0.0.0.0:9095",
       "external_ui": "/etc/momo/run/ui",
