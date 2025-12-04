@@ -4,18 +4,18 @@
       {
         "tag": "local",
         "type": "udp",
-        "server": "223.5.5.5"
+        "server": "116.116.116.116"
       },
       {
         "tag": "public",
         "type": "https",
-        "address": "https://dns.alidns.com/dns-query",
-        "detour": "🎯 全球直连"
+        "server": "dns.alidns.com",
+        "domain_resolver": "local"
       },
       {
         "tag": "foreign",
         "type": "https",
-        "address": "https://8.8.8.8/dns-query",
+        "server": "dns.google",
         "detour": "🚀 默认代理"
       },
       {
@@ -601,7 +601,7 @@
         "tag": "geoip-apple",
         "type": "remote",
         "format": "binary",
-        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/apple.srs",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs",
         "download_detour": "🎯 全球直连"
       },
       {
