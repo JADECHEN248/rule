@@ -3,13 +3,14 @@
     "servers": [
       { "tag": "local", "type": "udp", "server": "116.116.116.116" },
       { "tag": "public", "type": "https", "server": "dns.alidns.com", "domain_resolver": "local" },
-      { "tag": "foreign", "type": "https", "server": "8.8.8.8", "detour": "默认代理" },
+      { "tag": "foreign", "type": "https", "server": "8.8.8.8", "detour": "香港自动" },
       { "tag": "fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
       { "clash_mode": "direct", "server": "local" },
       { "rule_set": "geosite-cn", "server": "local" },
       { "rule_set": "geoip-cn", "server": "local" },
+      { "rule_set": "proxy", "server": "foreign" },
       { "rule_set": "geosite-google-play", "server": "foreign" },
       { "rule_set": "geosite-!cn", "server": "fakeip" },
       { "query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1 },
@@ -26,7 +27,7 @@
   "outbounds": [
     { "tag": "默认代理", "type": "selector", "outbounds": ["香港自动", "日本自动", "新加坡自动", "美国自动", "香港手动", "日本手动", "新加坡手动", "美国手动", "手动选择", "自动选择"] },
     { "tag": "AI", "type": "selector", "outbounds": ["全球直连", "日本自动", "新加坡自动", "美国自动", "日本手动", "新加坡手动", "美国手动"] },
-    { "tag": "YouTube", "type": "selector", "outbounds": ["全球直连", "香港自动",  "日本自动", "新加坡自动", "美国自动", "香港手动", "日本手动", "新加坡手动", "美国手动", "手动选择"] },
+    { "tag": "YouTube", "type": "selector", "outbounds": ["全球直连", "香港自动", "日本自动", "新加坡自动", "美国自动", "香港手动", "日本手动", "新加坡手动", "美国手动", "手动选择"] },
     { "tag": "Google", "type": "selector", "outbounds": ["全球直连", "香港自动", "日本自动", "新加坡自动", "美国自动", "香港手动", "日本手动", "新加坡手动", "美国手动", "手动选择"] },
     { "tag": "Github", "type": "selector", "outbounds": ["全球直连", "日本自动", "香港自动", "新加坡自动", "美国自动", "日本手动", "香港手动", "新加坡手动", "美国手动", "手动选择"] },
     { "tag": "Telegram", "type": "selector", "outbounds": ["全球直连", "新加坡自动", "香港自动", "日本自动", "美国自动", "新加坡手动", "香港手动", "日本手动", "美国手动", "手动选择"] },
@@ -56,6 +57,7 @@
       { "ip_is_private": true, "outbound": "全球直连" },
       { "clash_mode": "direct", "outbound": "全球直连" },
       { "clash_mode": "global", "outbound": "GLOBAL" },
+      { "rule_set": "proxy", "outbound": "Google" },
       { "rule_set": "geosite-ai", "outbound": "AI" },
       { "rule_set": "geosite-youtube", "outbound": "YouTube" },
       { "rule_set": "geosite-google", "outbound": "Google" },
@@ -97,7 +99,8 @@
       { "tag": "geoip-apple", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo-lite/geoip/apple.srs", "download_detour": "全球直连" },
       { "tag": "geoip-telegram", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs", "download_detour": "全球直连" },
       { "tag": "geoip-netflix", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs", "download_detour": "全球直连" },
-      { "tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs", "download_detour": "全球直连" }
+      { "tag": "geoip-cn", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs", "download_detour": "全球直连" },
+      { "tag": "proxy", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/proxy.srs", "download_detour": "全球直连" }
     ],
     "final": "漏网之鱼",
     "default_domain_resolver": { "server": "public" }
