@@ -10,8 +10,10 @@
       { "query_type": "HTTPS", "action": "reject" },
       { "clash_mode": "direct", "server": "local" },
       { "rule_set": ["geosite-google", "geosite-google-cn"], "server": "fakeip" },
+      { "domain_suffix": ["steamcommunity.com", "steamusercontent.com", "steamuserimages-a.akamaihd.net"], "server": "fakeip" },
       { "rule_set": ["geosite-steamcn", "geosite-category-games@cn"], "server": "local" },
       { "rule_set": ["geosite-steam"], "server": "fakeip" },
+
       { "rule_set": ["geosite-cn"], "server": "local" },
       { "rule_set": ["geosite-!cn"], "server": "fakeip" },
       { "clash_mode": "global", "rule_set": ["geosite-cn"], "server": "local" },
@@ -72,6 +74,7 @@
       { "rule_set": "geosite-tiktok", "outbound": "🎵 TikTok" },
       { "rule_set": "geosite-netflix", "outbound": "🎥 Netflix" },
       { "rule_set": "geosite-paypal", "outbound": "💶 PayPal" },
+      { "domain_suffix": ["steamcommunity.com", "steamusercontent.com", "steamuserimages-a.akamaihd.net"], "outbound": "🎮 Steam" },
       { "rule_set": ["geosite-steamcn", "geosite-category-games@cn"], "outbound": "🎯 全球直连" },
       { "rule_set": "geosite-steam", "outbound": "🎮 Steam" },
       { "rule_set": "geosite-!cn", "outbound": "🚀 默认代理" },
