@@ -4,7 +4,7 @@
       {
         "tag": "local",
         "type": "udp",
-        "server": "116.116.116.116"
+        "server": "223.5.5.5"
       },
       {
         "tag": "public",
@@ -16,7 +16,7 @@
         "tag": "foreign",
         "type": "https",
         "server": "dns.google",
-        "detour": "🇭🇰 香港自动"
+        "detour": "🚀 默认代理"
       },
       {
         "tag": "fakeip",
@@ -64,7 +64,7 @@
       }
     ],
     "final": "foreign",
-    "client_subnet": "163.125.131.0/24",
+    "client_subnet": "223.5.5.0/24",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true
@@ -578,6 +578,14 @@
         "outbound": "🎮 游戏服务"
       },
       {
+        "rule_set": "geosite-steamcn",
+        "outbound": "🎯 全球直连"
+      },
+      {
+        "rule_set": "geosite-steam",
+        "outbound": "🎮 游戏平台"
+      },
+      {
         "rule_set": "geosite-!cn",
         "outbound": "🚀 默认代理"
       },
@@ -591,10 +599,6 @@
       {
         "rule_set": "geoip-google",
         "outbound": "🍀 Google"
-      },
-      {
-        "rule_set": "geoip-games",
-        "outbound": "🎮 游戏平台"
       },
       {
         "rule_set": "geoip-apple",
@@ -706,6 +710,20 @@
         "download_detour": "🎯 全球直连"
       },
       {
+        "tag": "geosite-steamcn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam@cn.srs",
+        "download_detour": "🎯 全球直连"
+      },
+      {
+        "tag": "geosite-steam",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
+        "download_detour": "🎯 全球直连"
+      },
+      {
         "tag": "geosite-!cn",
         "type": "remote",
         "format": "binary",
@@ -724,13 +742,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
-        "download_detour": "🎯 全球直连"
-      },
-      {
-        "tag": "geoip-games",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/steam.srs",
         "download_detour": "🎯 全球直连"
       },
       {
