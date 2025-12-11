@@ -14,7 +14,6 @@
       { "rule_set": "geosite-google", "server": "fakeip" },
       { "rule_set": "geosite-cn", "server": "local" },
       { "rule_set": "geosite-!cn", "server": "fakeip" },
-      { "rule_set": "geoip-cn", "server": "local" },
       { "query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1 }
     ],
     "final": "foreign", "client_subnet": "163.125.173.0/24", "strategy": "prefer_ipv4", "independent_cache": true, "reverse_mapping": true
