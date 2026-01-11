@@ -3,7 +3,7 @@
     "servers": [
       { "tag": "local", "type": "udp", "server": "116.116.116.116" },
       { "tag": "public", "type": "https", "server": "dns.alidns.com", "domain_resolver": "local" },
-      { "tag": "foreign", "type": "https", "server": "https://8.8.8.8/dns-query", "detour": "🇭🇰 香港自动" },
+      { "tag": "foreign", "type": "udp", "server": "1.1.1.1", "detour": "🇭🇰 香港自动" },
       { "tag": "fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
