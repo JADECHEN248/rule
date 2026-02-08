@@ -24,7 +24,7 @@
     { "tag": "socks-in", "type": "socks", "listen": "::", "listen_port": 1080 },
     { "tag": "redirect-in", "type": "redirect", "listen": "::", "listen_port": 7890 },
     { "tag": "tproxy-in", "type": "tproxy", "listen": "::", "listen_port": 7891 },
-    { "tag": "tun-in", "type": "tun", "interface_name": "momo", "address": ["172.31.0.1/30", "fdfe:dcba:9876::1/126"], "auto_route": false, "auto_redirect": false }
+    { "tag": "tun-in", "type": "tun", "interface_name": "momo", "address": ["172.31.0.1/30", "fdfe:dcba:9876::1/126"], "auto_route": true, "auto_redirect": true, "stack": "system" }
   ],
   "outbounds": [
     { "tag": "🚀 默认代理", "type": "selector", "outbounds": ["🇭🇰 香港自动", "🇯🇵 日本自动", "🇸🇬 狮城自动", "🇺🇲 美国自动", "🇭🇰 香港手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🐸 手动选择", "♻️ 自动选择"] },
@@ -63,7 +63,7 @@
       { "rule_set": "geosite-games", "outbound": "🎮 游戏平台" },
       { "rule_set": "geosite-!cn", "outbound": "🚀 默认代理" },
       { "rule_set": "geosite-cn", "outbound": "🎯 全球直连" },
-      { "action": "resolve" },
+      { "action": "resolve","match_only": true },
       { "rule_set": "geoip-google", "outbound": "🍀 Google" },
       { "rule_set": "geoip-games", "outbound": "🎮 游戏平台" },
       { "rule_set": "geoip-apple", "outbound": "🍏 Apple" },
