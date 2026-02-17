@@ -137,6 +137,7 @@
                 "🇯🇵 日本手动",
                 "🇸🇬 狮城手动",
                 "🇺🇲 美国手动",
+                "💰 低倍率节点",
                 "🐸 手动选择",
                 "♻️ 自动选择"
             ]
@@ -192,6 +193,23 @@
                 "🇯🇵 日本手动",
                 "🇸🇬 狮城手动",
                 "🇺🇲 美国手动"
+            ]
+        },
+        {
+            "tag": "📦 PikPak 下载",
+            "type": "selector",
+            "outbounds": [
+                "💰 低倍率节点",
+                "🇭🇰 香港自动",
+                "🇯🇵 日本自动",
+                "🇸🇬 狮城自动",
+                "🇺🇲 美国自动",
+                "🇭🇰 香港手动",
+                "🇯🇵 日本手动",
+                "🇸🇬 狮城手动",
+                "🇺🇲 美国手动",
+                "🐸 手动选择",
+                "🎯 全球直连"
             ]
         },
         {
@@ -281,6 +299,15 @@
             "tolerance": 100
         },
         {
+            "tag": "💰 低倍率节点",
+            "type": "urltest",
+            "use_all_providers": true,
+            "include": "(?i)(0\\.\\d+x|低倍率|x0\\.\\d+|×0\\.\\d+|0\\.\\d+×)",
+            "exclude": "(?i)(网站|流量|地址|剩余|过期|免费|时间|有效|Traffic|ExpireDate|GB|Expire Date)",
+            "interval": "5m",
+            "tolerance": 100
+        },
+        {
             "tag": "GLOBAL",
             "type": "selector",
             "outbounds": [
@@ -288,6 +315,7 @@
                 "🍀 Google",
                 "🎮 游戏平台",
                 "🎮 游戏服务",
+                "📦 PikPak 下载",
                 "🍏 Apple",
                 "🐠 漏网之鱼",
                 "🇭🇰 香港自动",
@@ -298,6 +326,7 @@
                 "🇯🇵 日本手动",
                 "🇸🇬 狮城手动",
                 "🇺🇲 美国手动",
+                "💰 低倍率节点",
                 "🐸 手动选择",
                 "♻️ 自动选择",
                 "🎯 全球直连"
@@ -334,6 +363,10 @@
             {
                 "clash_mode": "global",
                 "outbound": "GLOBAL"
+            },
+            {
+                "rule_set": "geosite-pikpak",
+                "outbound": "📦 PikPak 下载"
             },
             {
                 "domain_suffix": [
@@ -416,6 +449,13 @@
                 "type": "remote",
                 "format": "source",
                 "url": "https://gh-proxy.com/https://raw.githubusercontent.com/qichiyuhub/rule/main/fakeipfilter.json",
+                "download_detour": "🎯 全球直连"
+            },
+            {
+                "tag": "geosite-pikpak",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/pikpak.srs",
                 "download_detour": "🎯 全球直连"
             },
             {
